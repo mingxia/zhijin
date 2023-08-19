@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+    <title>故事盒子</title>
+    <style type="text/css">
+    * {
+        font-family: 'Helvetica Neue', 'Roboto', 'PingFang SC', Helvetica, Arial, sans-serif;
+        color: #333333;
+        line-height: 1.6;
+        outline: none;
+    }
+
+    .block {
+        margin: 0 30px;
+    }
+
+    .mt100 {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .mt60 {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .mt30 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    strong {
+        color: #B14B43;
+    }
+
+    a.btn {
+        display: inline-block;
+        font-size: 14px;
+        padding: 6px 20px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+    a.btn:hover {
+        opacity: 0.9;
+    }
+
+    a.btn:active {
+        top: 1px;
+    }
+
+    a.btn-primary {
+        background: #B14B43;
+        color: #FFF;
+    }
+
+    a.btn-info {
+        background: white;
+    }
+
+    body {
+        background: #F8F6F4;
+        margin: 0 auto;
+    }
+
+    .pc {
+        max-width: unset;
+    }
+
+    #header {
+        padding: 20px 0 20px;
+        border-bottom: 5px solid #333333;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    #header_sep {
+        border-bottom: 1px solid rgb(233, 233, 233);
+        height: 6px;
+        margin: 0 auto;
+    }
+
+    @media screen and (min-width: 601px) {
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .intro div.btns a.btn {
+            display: block;
+            margin-top: 6px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .intro {
+            display: block;
+        }
+
+        .intro div.btns {
+            margin-top: 10px;
+        }
+    }
+
+    .feature h3 {
+        font-size: 36px;
+        line-height: 1.2;
+        margin: 0 0 20px;
+    }
+
+    .feature div.desc {
+        font-size: 16px;
+    }
+
+    @media screen and (min-width: 601px) {
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feature.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature img.cover {
+            width: 45%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .feature {
+            display: block;
+        }
+
+        .feature img.cover {
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+
+    .alternate {
+        background: #E9E9E9;
+        padding: 20px 20px;
+        border-radius: 6px;
+    }
+
+    .alternate h3 {
+        margin: 0 0 12px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .alternate div.desc {
+        font-size: 16px;
+    }
+
+    .alternate .icons {
+        margin-top: 16px;
+    }
+
+    .alternate .icons img {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+    }
+
+    @media screen and (min-width: 601px) {
+        .alternates {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .alternate {
+            width: 27%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .alternate {
+            margin: 20px 0;
+        }
+    }
+
+    #footer {
+        padding: 20px 0 20px;
+        border-top: 1px solid rgb(233, 233, 233);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .pc-header {
+        justify-content: flex-start !important;
+        align-self: center !important;
+        max-width: 960px;
+        margin: 0 auto;
+        border-bottom: unset !important;
+    }
+
+    .pc-header .menu {
+        margin-left: 33px;
+    }
+
+    .pc-header .menu a {
+        margin: auto 20px;
+        font-size: 18px;
+        line-height: 160%;
+        text-align: center;
+        color: #979797 !important;
+        text-decoration: none;
+    }
+
+    .pc-header .menu a:first-child {
+        color: #333333 !important;
+    }
+
+    .wrap {
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+
+    @media screen and (min-width: 601px) {
+        .hide-in-web {
+            display: none !important;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .hide-in-mobile {
+            display: none !important;
+        }
+
+        .wrap {
+            padding: unset !important;
+        }
+
+        .pc-header {
+            padding: 20px 30px !important;
+        }
+
+        .pc-header .menu {
+            margin-left: 20px !important;
+        }
+
+        .pc-header .menu a {
+            margin: auto 9px;
+        }
+
+        .feature div.desc {
+            font-size: 15px !important;
+        }
+    }
+
+    .slogan {
+        background-image: url('./file/feature-slogan.png');
+        background-size: 100%;
+        height: 180px;
+        padding: 20px;
+    }
+
+    .slogan h4 {
+        color: white;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .slogan p {
+        font-size: 14px;
+        color: #FFF;
+    }
+
+    .btn-white {
+        background-color: #FFFDFC;
+        ;
+        color: #B14B43;
+        padding: 9px 20px;
+        font-size: 12px;
+        border-radius: 0px !important;
+    }
+    </style>
+</head>
+<body>
+    <div id="header" class="block  pc-header">
+        <svg width="126" height="37" viewBox="0 0 126 37" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect width="37" height="37" rx="6" fill="url(#pattern0)"/>
+            <path d="M65.1464 5.66064H61.5058V27.0196C61.5058 28.7967 60.8654 29.3093 59.6182 29.3093H58.4384V33.0001H59.6182C63.3261 33.0001 65.1464 31.2572 65.1464 27.0196V5.66064ZM54.0562 13.2132C54.0562 20.4581 53.7866 23.2604 52 26.2336L55.1686 28.079C57.2923 24.4565 57.6968 21.3467 57.6968 13.2132H54.0562ZM68.888 13.2132C68.888 21.3467 69.2925 24.4565 71.4162 28.079L74.5848 26.2336C72.7982 23.2604 72.5286 20.4581 72.5286 13.2132H68.888Z" fill="#333333 "/>
+            <path d="M124.619 9.47315V6.43414H115.667V5H111.963V6.43414H103.01V9.47315H117.485V11.4536H110.145V10.1561H106.44V11.4536H102.324V14.4585H125.305V11.4536H121.189V9.47315H124.619ZM124.619 28.834V25.8292H115.667V24.7023H124.619V15.4829H103.01V24.7023H111.963V25.8292H103.01V28.834H111.963V29.995H102.324V32.9999H125.305V29.995H115.667V28.834H124.619ZM106.715 19.2048V17.8048H111.963V19.2048H106.715ZM120.915 17.8048V19.2048H115.667V17.8048H120.915ZM106.715 22.3804V20.9804H111.963V22.3804H106.715ZM120.915 20.9804V22.3804H115.667V20.9804H120.915Z" fill="#333333 "/>
+            <path d="M79.7511 7.52682H75.7734V11.2146H79.7511V13.0585H75.7734V16.7463H76.7847V20.195H75.7734V23.8828H79.7511V25.6243H75.7734V29.3121H79.7511V32.9999H83.4253V29.3121H87.4029V25.6243H83.4253V23.8828H87.4029V20.195H86.3917V16.7463H87.4029V13.0585H83.4253V11.2146H87.4029V7.52682H83.4253V5H79.7511V7.52682ZM91.7176 9.37071H94.3806C94.3132 10.7707 94.0098 11.1805 93.1671 11.1805V14.8682C96.2009 14.8682 98.0211 13.1268 98.0211 8.89266V5.68292H88.4142V32.9999H91.7176V30.3365L92.9986 32.9999C93.6727 32.3852 94.2795 31.7706 94.7851 31.1218C95.3582 31.8047 95.9986 32.4194 96.7739 32.9999L98.3582 29.6877C97.6841 29.2096 97.1447 28.6633 96.6391 28.0828C98.0886 24.8731 98.3582 20.9804 98.3582 15.6536H91.7176V9.37071ZM80.4252 20.195V16.7463H82.7511V20.195H80.4252ZM94.6503 24.2584C94.3806 23.3023 94.2121 22.3121 94.1109 21.356L91.7176 22.0389V19.3414H95.3245C95.2233 21.3219 95.0211 22.8926 94.6503 24.2584ZM91.7176 22.7219C91.9199 24.3267 92.257 26.1365 92.9311 27.8779C92.594 28.3901 92.1895 28.8682 91.7176 29.3462V22.7219Z" fill="#333333 "/>
+            <defs>
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_0_1" transform="scale(0.00390625)"/>
+                </pattern>
+                <image id="image0_0_1" width="256" height="256" xlink:href="data:image/png;base64,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"/>
+            </defs>
+        </svg>
+        <div class="menu">
+            <a href="/subscribed/" target="_blank">首页</a>
+            <a href="https://help.xiaobot.net/selected.html" target="_blank">精选</a>
+            <a href="https://jinshuju.net/f/x0BtWK" target="_blank">申请</a>
+        </div>
+    </div>
+    <div id="header_sep" class="block"></div>
+    <div class="wrap">
+        <div class="intro block mt30">
+            <div style="font-weight:bold; font-size:22px;">
+
+                如果你厌倦了
+                <span class="underline">紧追热点</span>
+                来写作
+                <br/>
+
+                如果你厌倦了作品被
+                <span class="underline">植入软广</span>
+                <br/>
+
+                如果你厌倦了被杠精
+                <span class="underline">无脑吐槽</span>
+                <br/>
+
+                你该试试付费专栏，
+                <br class="hide-in-web"/>
+                <strong>体面而用心地创作</strong>
+            </div>
+            <div class="btns">
+                <a class="btn btn-primary" href="/creator" id="creator" target="_blank">创作者中心</a>
+                <a class="btn btn-info" href="/subscribed/">我的订阅</a>
+            </div>
+        </div>
+        <div class="feature block mt60">
+            <div>
+                <h3>
+
+                    专注创作核心
+                    <br/>
+
+                    摒弃冗余套路
+                </h3>
+                <div class="desc">
+
+                    1.获取创作收益，建立正向激励
+                    <br/>
+
+                    2.专属创作后台，纯净编辑体验
+                    <br/>
+
+                    3.摒弃社群功能，聚焦观点表达
+                </div>
+            </div>
+            <img class="cover" src="./img/www/feature-focus.png"/>
+        </div>
+        <div class="feature reverse block mt60">
+            <div>
+                <h3>
+
+                    买断制专栏
+                    <br/>
+
+                    把知识广泛持续传播
+                </h3>
+                <div class="desc">
+
+                    1.买断制适合围绕某个主题深入展开
+                    <br/>
+
+                    2.主题聚焦且实用，有利于打破现有圈层壁垒
+                    <br/>
+
+                    3.沉淀知识资产，一次创作，持续销售
+                </div>
+            </div>
+            <img class="cover" src="./img/www/feature-book.png"/>
+        </div>
+        <div class="feature block mt60">
+            <div>
+                <h3>
+
+                    订阅制专栏
+                    <br/>
+
+                    和读者建立长期联系
+                </h3>
+                <div class="desc">
+
+                    1.订阅制适合已有粉丝的创作者
+                    <br/>
+
+                    2.通过付费机制，筛选核心粉丝，建立长期契约
+                    <br/>
+
+                    3.订阅自动到期提醒，不必费心管理
+                </div>
+            </div>
+            <img class="cover" src="./img/www/feature-column.png"/>
+        </div>
+        <div class="feature reverse block mt60">
+            <div>
+                <h3>
+
+                    多种订阅方式
+                    <br/>
+
+                    让内容触达更高效
+                </h3>
+                <div class="desc">
+
+                    1.微信投递，内容触达率高
+                    <br/>
+
+                    2.邮件投递，符合 newsletter 习惯
+                    <br/>
+
+                    3.专为 PC 大屏设计的沉浸式阅读体验
+                </div>
+            </div>
+            <img class="cover" src="./img/www/feature-drop.png"/>
+        </div>
+        <div class="alternates block mt30">
+            <div class="alternate">
+                <h3>
+                    不做
+                    <strong>社群工具</strong>
+                </h3>
+                <div class="desc">
+                    专注帮助内容创作，无社群
+                    <br/>
+                    如需社群工具请考虑
+                </div>
+                <div class="icons">
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_zsxq.png"/>
+                </div>
+            </div>
+            <div class="alternate">
+                <h3>
+                    不做
+                    <strong>广告变现</strong>
+                </h3>
+                <div class="desc">
+                    不提供广告变现模式
+                    <br/>
+                    如需广告变现请考虑
+                </div>
+                <div class="icons">
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_tth.png"/>
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_gzh.png"/>
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_bjh.png"/>
+                </div>
+            </div>
+            <div class="alternate">
+                <h3>
+                    不做
+                    <strong>算法推荐</strong>
+                </h3>
+                <div class="desc">
+                    不通过算法博取大众眼球
+                    <br/>
+                    如需算法推荐请考虑
+                </div>
+                <div class="icons">
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_xhs.png"/>
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_zh.png"/>
+                    <img src="https://xiaobot-resource.oss-cn-shanghai.aliyuncs.com/web/home/icon_bilibili.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="block mt100" style="text-align:center;">
+            <h4 style="font-size:28px; margin:0 0 20px;">在故事中经验世界</h4>
+            <a class="btn btn-primary" style="font-size:16px;" href="https://jinshuju.net/f/x0BtWK" target="_blank">成为会员</a>
+        </div>
+        <div id="footer" class="block mt30 hide-in-mobile">
+            <div>
+                © 2023 故事盒子 
+                <a href="https://beian.miit.gov.cn/">浙ICP备2021033650号-1</a>
+                 增值电信业务许可证：浙 B2-20220425
+            </div>
+            <div class="menu">
+                <a href="https://help.xiaobot.net/privacy.html" target="_blank">隐私条款</a>
+                 ·
+                <a href="https://help.xiaobot.net/legal.html" target="_blank">用户协议</a>
+            </div>
+        </div>
+        <div class="block mt30 hide-in-web" style="font-size:14px">
+            <div>
+                © 2021 故事盒子 
+                <a href="https://beian.miit.gov.cn/">浙ICP备2021033650号-1</a>
+                 增值电信业务许可证：浙 B2-20220425
+            </div>
+            <div class="menu" style="margin-top:5px">
+                <a href="https://help.xiaobot.net/privacy.html" target="_blank">隐私条款</a>
+                 ·
+                <a href="https://help.xiaobot.net/legal.html" target="_blank">用户协议</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    window.onload = function() {
+        const time = new Date().getTime()
+        const creator = document.getElementById('creator')
+        creator.attributes.href.value = creator.attributes.href.value + '?t=' + time
+        if (!isMobile()) {
+            document.body.classList.add('pc')
+        }
+    }
+    function isMobile() {
+        const ua = navigator.userAgent
+        const ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+            isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+            isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+            isMobile = isIphone || isAndroid
+        return isMobile
+    }
+    </script>
+</body>
+</html>
