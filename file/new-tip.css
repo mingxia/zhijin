@@ -11,6 +11,22 @@
   height: 16px;
   font-size: 12px;
   border-radius: 4px;
-  font-weight: 200;
+  font-weight: 300;
+  margin-left: 6px;
+}
+.new-tip-2 {
+  background-color: green;
+  display: inline-block;
+  padding: 0 2px;
+  text-align: center;
+  vertical-align: middle;
+  font-style: normal;
+  color: #fff;
+  overflow: hidden;
+  line-height: 16px;
+  height: 16px;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 300;
   margin-left: 6px;
 }
