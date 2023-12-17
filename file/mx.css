@@ -1,3 +1,10 @@
+/* 导入其他CSS文件 */
+@import url('https://cdn.staticfile.org/lxgw-wenkai-webfont/1.6.0/style.css');
+
+body {
+  font-family: "LXGW WenKai", sans-serif;
+}
+
 blockquote {
   color: #666;
   border-left: 4px solid #ddd;
